@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy & Terms of Use</title>
+  <style>
+    body { font-family: sans-serif; margin: 16px; background-color: #f9f9f9; line-height: 1.6; color: #333; }
+    h2 { color: #2e8b57; margin-top: 24px; }
+    h3 { color: #663399; margin-top: 20px; }
+    p { margin-bottom: 12px; }
+    .section { margin-bottom: 28px; }
+    .lang-th { font-weight: bold; color: #444; }
+  </style>
+</head>
+<body>
+  <h2>🛡️ Privacy Policy / <span class="lang-th">นโยบายความเป็นส่วนตัว</span></h2>
+  <div class="section">
+    <p><strong>Effective Date:</strong> [Insert Date]</p>
+    <p><strong>Last Updated:</strong> [Insert Date]</p>
+
+    <h3>1. Information We Collect / <span class="lang-th">ข้อมูลที่เรารวบรวม</span></h3>
+    <ul>
+      <li>Personal Info: Name, employee ID, email / <span class="lang-th">ชื่อ รหัสพนักงาน อีเมล</span></li>
+      <li>Location & Time: Timestamps, optional GPS / <span class="lang-th">เวลาทำงาน ตำแหน่ง (ถ้ามี)</span></li>
+      <li>Device Info: Device ID, OS / <span class="lang-th">ข้อมูลอุปกรณ์ เช่น หมายเลขอุปกรณ์ ระบบปฏิบัติการ</span></li>
+    </ul>
+
+    <h3>2. Use of Data / <span class="lang-th">การใช้ข้อมูล</span></h3>
+    <ul>
+      <li>Attendance tracking / <span class="lang-th">ระบบบันทึกเวลา</span></li>
+      <li>Payroll report generation / <span class="lang-th">สร้างรายงานสำหรับเงินเดือน</span></li>
+      <li>Security and support / <span class="lang-th">รักษาความปลอดภัยและการซัพพอร์ต</span></li>
+    </ul>
+
+    <h3>3. Data Disclosure / <span class="lang-th">การเปิดเผยข้อมูล</span></h3>
+    <p>We may share with employers or as required by law.  
+       <br/><span class="lang-th">เราอาจเปิดเผยข้อมูลให้กับนายจ้างหรือหน่วยงานราชการตามกฎหมาย</span></p>
+
+    <h3>4. Data Retention / <span class="lang-th">การเก็บข้อมูล</span></h3>
+    <p>We retain only as necessary.  
+       <br/><span class="lang-th">เราจะเก็บเฉพาะข้อมูลเท่าที่จำเป็นเท่านั้น</span></p>
+
+    <h3>5. Your Rights / <span class="lang-th">สิทธิของคุณ</span></h3>
+    <p>You can access, correct, or request deletion.  
+       <br/><span class="lang-th">คุณสามารถเข้าถึง แก้ไข หรือลบข้อมูลของคุณได้</span></p>
+  </div>
+</body>
+</html>
