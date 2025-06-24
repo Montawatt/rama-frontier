@@ -37,6 +37,9 @@
                         document.getElementById('attend_token').style.display = 'none';
                     } else {
                         //Old
+                        document.getElementById('attend_token').style.visibility = 'visible';
+                        document.getElementById('regist_token').style.visibility = 'hidden';
+                        document.getElementById('regist_token').style.display = 'none';
                         httpPost(urim);
                     }
                 } else {
@@ -44,6 +47,10 @@
                 };
             } else {
                 //Open on Web browser
+                document.getElementById('regist_token').style.visibility = 'hidden';
+                document.getElementById('regist_token').style.display = 'none';
+                document.getElementById('attend_token').style.visibility = 'hidden';
+                document.getElementById('attend_token').style.display = 'none';
                 document.getElementById('txalert').innerHTML = "Sorry, please open this app on LINE-OA.";
             };
         };
