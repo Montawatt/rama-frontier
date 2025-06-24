@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+    <title>RHCF-TA</title>
+</head>
+<body>
+    <div style="margin-left: 12%; margin-right: 15%; width: 90%; font-size: larger;">
+        <div id="attend_token" style="margin-left: 10%; width: 80%;">
+            <h4>QR code Stamp</h4>
+            <button id="btnQR" onclick="scanCode()">Scan QR</button>
+        </div>
+        <div id="regist_token" style="margin-left: 10%; width: 80%;">
+            <h4>Need new Token</h4><br />
+            <div><b>Username (ชื่อผู้ใช้) เช่น 003526</b> &nbsp;</div><br />
+            <button id="butt_regist" style="border-radius: 3px; color: #0026ff;" onclick="httpGet()">Submit with new Token (บันทึกเวลาและเก็บรหัสใหม่)</button>
+        </div>
+        <div id="txalert" style="margin-left: 10%; width: 80%; color: #ff6a00; margin-top: 20px;"></div>
+    </div>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script type="text/javascript">
+        let token = localStorage.getItem("token");  //Load user token
+        var urim = "";
+        async function scanCode() { 
+            if (liff.isInClient()) {
+                //Open on LINE
+                const result = await liff.scanCode();
+                urim = result.value;
+                alert(urim);   //
+                if (urim != undefined && urim.length > 5) {
+                    if (token == null || token == "") {
+                        //New
+                        document.getElementById('regist_token').style.visibility = 'visible';
+                        document.getElementById('attend_token').style.visibility = 'hidden';
+                        document.getElementById('attend_token').style.display = 'none';
+                    } else {
+                        //Old
+                        httpPost(urim);
+                    }
+                } else {
+                    document.getElementById('txalert').innerHTML = "Wrong QR problem.";
+                };
+            } else {
+                //Open on Web browser
+                document.getElementById('txalert').innerHTML = "Sorry, please open this app on LINE-OA.";
+            };
+        };
+        async function main() {
+            await liff.init({ liffId: "2007451851-4OrymRxl" })
+            scanCode()
+        };
+        main();
+
+        function httpGet() {
+            //Regist token + stamp
+            var unn = document.getElementById("username").value;
+            if (unn == undefined || unn == '') {
+                document.getElementById('txalert').innerHTML = "Username is required.";
+            } else {
+                var headToken = getQueryVariable("id", urim);
+                if (headToken == undefined || headToken == null) {
+                    document.getElementById('txalert').innerHTML = "Link must come from QR.";
+                } else {
+                    var headUrl = headToken + '=|' + String(unn);
+                    document.getElementById("butt_regist").disabled = true;
+                    fetch('https://func-ta-prd-ea-01.azurewebsites.net/api/TAstamp?id=' + headUrl)
+                        .then(response => response.text())
+                        .then(data => GetStore(data))
+                        .catch(error => console.error('Error:', error));
+                };
+            };
+        };
+        function GetStore(tk) {
+            if (tk == "") {
+                document.getElementById('txalert').innerHTML = "Duplicate token. Please contact HR";
+            } else {
+                localStorage.setItem("token", tk);  //Store token
+                document.getElementById('txalert').innerHTML = "Done";
+                window.location.replace('/myatt.html');  //Done
+            };
+        };
+        function httpPost(uri) {
+            //Stamp with token
+            var headToken = getQueryVariable("id", uri);
+            if (headToken == undefined || headToken == null) { headToken = ''; };
+            var headUrl = headToken + '=' + String(token);
+            document.getElementById("butt_attend").disabled = true;
+            fetch('https://func-ta-prd-ea-01.azurewebsites.net/api/TAstamp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/text' },
+                body: headUrl,
+            })
+                .then(response => response.text())
+                .then(data => PostStore(data))
+                .catch(error => console.error('Error:', error));
+        };
+        function PostStore(tt) {
+            if (tt == "") {
+                document.getElementById('txalert').innerHTML = "OK";
+                window.location.replace('/myatt.html');
+            } else {
+                document.getElementById('txalert').innerHTML = tt;
+            };
+        };
+        //function reset_token() { localStorage.clear(); };
+        function getQueryVariable(variable, urlstr) {
+            var query = "";
+            if (urlstr == null || urlstr == '') {
+                query = window.location.search.substring(1);
+            } else {
+                query = urlstr;
+            };
+            const vars = query.split("&");
+            for (let i = 0; i < vars.length; i++) {
+                const pair = vars[i].split("=");
+                if (pair[0] === variable) { return pair[1]; };
+            };
+        };
+    </script>
+</body>
+</html>
