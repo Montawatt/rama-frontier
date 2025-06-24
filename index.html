@@ -12,7 +12,7 @@
             <h4>QR code Stamp</h4>
             <button id="btnQR" onclick="scanCode()">Scan QR</button>
         </div>
-        <div id="regist_token" style="margin-left: 10%; width: 80%;">
+        <div id="regist_token" style="margin-left: 10%; width: 80%; visibility: hidden;">
             <h4>Need new Token</h4><br />
             <div><b>Username (ชื่อผู้ใช้) เช่น 003526</b> &nbsp;</div><br />
             <button id="butt_regist" style="border-radius: 3px; color: #0026ff;" onclick="httpGet()">Submit with new Token (บันทึกเวลาและเก็บรหัสใหม่)</button>
@@ -23,12 +23,12 @@
     <script type="text/javascript">
         let token = localStorage.getItem("token");  //Load user token
         var urim = "";
-        async function scanCode() { 
+        async function scanCode() {             
             if (liff.isInClient()) {
                 //Open on LINE
                 const result = await liff.scanCode();
                 urim = result.value;
-                alert(urim);   //
+                alert(urim);   //Test
                 if (urim != undefined && urim.length > 5) {
                     if (token == null || token == "") {
                         //New
@@ -37,9 +37,9 @@
                         document.getElementById('attend_token').style.display = 'none';
                     } else {
                         //Old
-                        document.getElementById('attend_token').style.visibility = 'visible';
-                        document.getElementById('regist_token').style.visibility = 'hidden';
-                        document.getElementById('regist_token').style.display = 'none';
+                        //document.getElementById('attend_token').style.visibility = 'visible';
+                        //document.getElementById('regist_token').style.visibility = 'hidden';
+                        //document.getElementById('regist_token').style.display = 'none';
                         httpPost(urim);
                     }
                 } else {
