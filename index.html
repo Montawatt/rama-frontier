@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
     <title>RHCF-TA</title>
 </head>
-<body>
-    <div style="margin-left: 12%; margin-right: 15%; width: 90%; font-size: larger;">
+<body style="background-color: #707070;">
+    <div style="margin-left: 15%; margin-right: 15%; width: 70%; font-size: larger; color: #CC6CE7;">
         <div id="attend_token" style="margin-left: 10%; width: 80%;">
-            <h4>QR code Stamp</h4>
-            <button id="btnQR" onclick="scanCode()">Scan QR</button>
+            <h4>Please wait a bit...</h4>
+            <button id="btnQR" style="visibility: hidden;" onclick="scanCode()">Scan QR</button>
         </div>
         <div id="regist_token" style="margin-left: 10%; width: 80%; visibility: hidden;">
             <h4>Need new Token</h4><br />
             <div><b>Username (ชื่อผู้ใช้) เช่น 003526</b> &nbsp; <input id="username" type="text" /></div><br />
-            <button id="butt_regist" style="border-radius: 3px; color: #0026ff;" onclick="httpGet()">Submit with new Token (บันทึกเวลาและเก็บรหัสใหม่)</button>
+            <button id="butt_regist" style="border-radius: 3px; color: #0026ff;" onclick="httpGet()">Submit (บันทึกเวลาและเก็บรหัสใหม่)</button>
         </div>
         <div id="txalert" style="margin-left: 10%; width: 80%; color: #ff6a00; margin-top: 20px;"></div>
     </div>
@@ -45,6 +45,7 @@
                 } else {
                     document.getElementById('txalert').innerHTML = "Wrong QR problem.";
                 };
+                document.getElementById('btnQR').style.visibility = 'visible';
             } else {
                 //Open on Web browser
                 document.getElementById('regist_token').style.visibility = 'hidden';
