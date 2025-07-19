@@ -89,6 +89,7 @@
             //Stamp with token            
             var headToken = getQueryVariable("id", uri);
             if (headToken == undefined || headToken == null) { headToken = ''; };
+            alert(headToken);
             var headUrl = headToken + '=' + String(token);
             alert(headUrl);
             fetch('https://func-ta-prd-ea-01.azurewebsites.net/api/TAstamp', {
