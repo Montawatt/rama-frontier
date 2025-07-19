@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
     <title>RHCF-TA</title>
 </head>
-<body style="background-color: #707070;">
-    <div style="margin-left: 15%; margin-right: 15%; width: 70%; font-size: larger; color: #CC6CE7;">
+<body style="background-color: #ffffff;">
+    <div style="margin-left: 5%; width: 90%; font-size: medium; color: #CC6CE7;">
         <div id="attend_token" style="margin-left: 10%; width: 80%;">
             <h4>Please wait a bit...</h4>
             <button id="btnQR" style="visibility: hidden;" onclick="scanCode()">Scan QR</button>
@@ -67,6 +67,8 @@
                 document.getElementById('txalert').innerHTML = "Username is required.";
             } else {
                 var headToken = getQueryVariable("id", urim);
+                alert(urim);
+                alert(headToken);
                 if (headToken == undefined || headToken == null) {
                     document.getElementById('txalert').innerHTML = "Link must come from QR.";
                 } else {
