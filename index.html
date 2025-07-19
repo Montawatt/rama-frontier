@@ -36,10 +36,6 @@
                         document.getElementById('attend_token').style.display = 'none';
                     } else {
                         //Old
-                        //document.getElementById('attend_token').style.visibility = 'visible';
-                        //document.getElementById('regist_token').style.visibility = 'hidden';
-                        //document.getElementById('regist_token').style.display = 'none';
-                        alert(token);
                         httpPost(urim);
                     }
                 } else {
@@ -94,7 +90,6 @@
             var headToken = getQueryVariable("id", uri);
             if (headToken == undefined || headToken == null) { headToken = ''; };
             var headUrl = headToken + '=' + String(token);
-            document.getElementById("butt_attend").disabled = true;
             alert(headUrl);
             fetch('https://func-ta-prd-ea-01.azurewebsites.net/api/TAstamp', {
                 method: 'POST',
