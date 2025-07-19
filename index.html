@@ -67,7 +67,6 @@
                 document.getElementById('txalert').innerHTML = "Username is required.";
             } else {
                 var headToken = getQueryVariable("id", urim);
-                alert(headToken);
                 if (headToken == undefined || headToken == null) {
                     document.getElementById('txalert').innerHTML = "Link must come from QR.";
                 } else {
