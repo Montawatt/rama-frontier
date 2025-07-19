@@ -67,7 +67,6 @@
                 document.getElementById('txalert').innerHTML = "Username is required.";
             } else {
                 var headToken = getQueryVariable("id", urim);
-                alert(urim);
                 alert(headToken);
                 if (headToken == undefined || headToken == null) {
                     document.getElementById('txalert').innerHTML = "Link must come from QR.";
@@ -118,13 +117,13 @@
             var query = "";
             if (urlstr == null || urlstr == '') {
                 query = window.location.search.substring(1);
+                const vars = query.split("&");
+                for (let i = 0; i < vars.length; i++) {
+                    const pair = vars[i].split("=");
+                    if (pair[0] === variable) { return pair[1]; };
+                };
             } else {
-                query = urlstr;
-            };
-            const vars = query.split("&");
-            for (let i = 0; i < vars.length; i++) {
-                const pair = vars[i].split("=");
-                if (pair[0] === variable) { return pair[1]; };
+                return urlstr.searchParams.get(variable);
             };
         };
     </script>
