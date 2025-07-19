@@ -41,7 +41,7 @@
                 } else {
                     document.getElementById('txalert').innerHTML = "Wrong QR problem.";
                 };
-                document.getElementById('btnQR').style.visibility = 'visible';
+                //document.getElementById('btnQR').style.visibility = 'visible';
             } else {
                 //Open on Web browser
                 document.getElementById('regist_token').style.visibility = 'hidden';
@@ -89,9 +89,7 @@
             //Stamp with token            
             var headToken = getQueryVariable("id", uri);
             if (headToken == undefined || headToken == null) { headToken = ''; };
-            alert(headToken);
             var headUrl = headToken + '=' + String(token);
-            alert(headUrl);
             fetch('https://func-ta-prd-ea-01.azurewebsites.net/api/TAstamp', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/text' },
