@@ -30,9 +30,20 @@
                     document.getElementById('btnQR').style.visibility = 'visible';
                 }, 4000); // 4000 milliseconds = 4 seconds
                 
-                //Open on LINE
-                const result = await liff.scanCodeV2();
-                urim = result.value;
+                //Open on LINE SCANQR
+                if (liff.scanCodeV2) {
+                    liff.scanCodeV2()
+                      .then(result => {
+                        urim = result.value;
+                      })
+                      .catch(err => {
+                        //console.error("Scan failed", err);
+                      });
+                  } else {
+                    const result = await liff.scanCode();
+                    urim = result.value;
+                  };
+                
                 if (urim != undefined && urim.length > 5) {
                     if (token == null || token == "") {
                         //New
