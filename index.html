@@ -31,13 +31,15 @@
                 }, 4000); // 4000 milliseconds = 4 seconds
                 
                 //Open on LINE SCANQR
-                if (liff.scanCodeV2) {
+                if (typeof liff.scanCode === 'function') {
+                    const result1 = await liff.scanCode();
+                    urim = result1.value;
+                } else if (typeof liff.scanCodeV2 === 'function') {
                     const result2 = await liff.scanCodeV2();
                     urim = result2.value;
-                  } else {
-                    const result = await liff.scanCode();
-                    urim = result.value;
-                  };
+                } else {
+                    document.getElementById('txalert').innerHTML = "No QR scanning method available in this environment.";
+                };
                 
                 if (urim != undefined && urim.length > 5) {
                     if (token == null || token == "") {
