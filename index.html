@@ -26,7 +26,7 @@
         async function scanCode() {             
             if (liff.isInClient()) {
                 //Open on LINE
-                const result = await liff.scanCode();
+                const result = await liff.scanCodeV2();
                 urim = result.value;
                 if (urim != undefined && urim.length > 5) {
                     if (token == null || token == "") {
