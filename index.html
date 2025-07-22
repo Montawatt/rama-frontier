@@ -25,6 +25,11 @@
         var urim = "";
         async function scanCode() {             
             if (liff.isInClient()) {
+                //Delayed enable manual ScanQR
+                setTimeout(() => {
+                    document.getElementById('btnQR').style.visibility = 'visible';
+                }, 4000); // 4000 milliseconds = 4 seconds
+                
                 //Open on LINE
                 const result = await liff.scanCodeV2();
                 urim = result.value;
@@ -41,7 +46,6 @@
                 } else {
                     document.getElementById('txalert').innerHTML = "Wrong QR problem.";
                 };
-                //document.getElementById('btnQR').style.visibility = 'visible';
             } else {
                 //Open on Web browser
                 document.getElementById('regist_token').style.visibility = 'hidden';
