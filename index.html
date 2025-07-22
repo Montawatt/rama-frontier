@@ -32,13 +32,8 @@
                 
                 //Open on LINE SCANQR
                 if (liff.scanCodeV2) {
-                    liff.scanCodeV2()
-                      .then(result => {
-                        urim = result.value;
-                      })
-                      .catch(err => {
-                        //console.error("Scan failed", err);
-                      });
+                    const result2 = await liff.scanCodeV2();
+                    urim = result2.value;
                   } else {
                     const result = await liff.scanCode();
                     urim = result.value;
