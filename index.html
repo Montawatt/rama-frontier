@@ -26,9 +26,9 @@
         async function scanCode() {             
             if (liff.isInClient()) {
                 //Delayed enable manual ScanQR
-                setTimeout(() => {
-                    document.getElementById('btnQR').style.visibility = 'visible';
-                }, 4000); // 4000 milliseconds = 4 seconds
+                //setTimeout(() => {
+                //    document.getElementById('btnQR').style.visibility = 'visible';
+                //}, 4000); // 4000 milliseconds = 4 seconds
                 
                 //Open on LINE SCANQR
                 if (typeof liff.scanCode === 'function') {
