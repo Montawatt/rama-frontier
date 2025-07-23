@@ -31,8 +31,9 @@
                 //}, 4000); // 4000 milliseconds = 4 seconds
                 
                 //Open on LINE SCANQR
-                window.location = 'https://line.me/R/nv/QRCodeReader';
-                urim = window.location.search;
+                //window.location = 'https://line.me/R/nv/QRCodeReader';
+                const response = await fetch('https://line.me/R/nv/QRCodeReader');
+                urim = await response.text();
                 
                 if (urim != undefined && urim.length > 5) {
                     if (token == null || token == "") {
