@@ -31,15 +31,8 @@
                 //}, 4000); // 4000 milliseconds = 4 seconds
                 
                 //Open on LINE SCANQR
-                if (typeof liff.scanCode === 'function') {
-                    const result1 = await liff.scanCode();
-                    urim = result1.value;
-                } else if (typeof liff.scanCodeV2 === 'function') {
-                    const result2 = await liff.scanCodeV2();
-                    urim = result2.value;
-                } else {
-                    document.getElementById('txalert').innerHTML = "No QR scanning method available in this environment.";
-                };
+                window.location = 'https://line.me/R/nv/QRCodeReader';
+                urim = window.location.search;
                 
                 if (urim != undefined && urim.length > 5) {
                     if (token == null || token == "") {
@@ -123,8 +116,7 @@
         function getQueryVariable(variable, urlstr) {
             var query = "";
             if (urlstr == null || urlstr == '') {
-                query = window.location.search.substring(1);
-                
+                query = window.location.search.substring(1);                
             } else {
                 query = urlstr.substring(urlstr.indexOf("?") + 1);
             };
