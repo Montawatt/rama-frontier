@@ -32,8 +32,12 @@
                 
                 //Open on LINE SCANQR
                 //window.location = 'https://line.me/R/nv/QRCodeReader';
-                const response = await fetch('https://line.me/R/nv/QRCodeReader');
-                urim = await response.text();
+                if (typeof liff.scanCode === 'function') {
+                    const result1 = await liff.scanCode();
+                    urim = result1.value;
+                } else {
+                    window.location = 'https://line.me/R/nv/QRCodeReader';    //External QR reader
+                };
                 
                 if (urim != undefined && urim.length > 5) {
                     if (token == null || token == "") {
