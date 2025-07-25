@@ -37,6 +37,7 @@
                     urim = result1.value;
                 } else {
                     window.location = 'https://line.me/R/nv/QRCodeReader';    //External QR reader
+                    urim = decodeURIComponent(window.location.search);
                 };
                 
                 if (urim != undefined && urim.length > 5) {
