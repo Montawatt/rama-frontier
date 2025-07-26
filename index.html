@@ -36,8 +36,13 @@
                     const result1 = await liff.scanCode();
                     urim = result1.value;
                 } else {
-                    window.location = 'https://line.me/R/nv/QRCodeReader';    //External QR reader
-                    urim = decodeURIComponent(window.location.search);
+                    //window.location = 'https://line.me/R/nv/QRCodeReader';    //External QR reader
+                    //urim = decodeURIComponent(window.location.search);
+
+                    const qrWindow = window.open('https://line.me/R/nv/QRCodeReader');
+                    window.addEventListener('message', event => {
+                      urim = event.data;
+                    });
                 };
                 
                 if (urim != undefined && urim.length > 5) {
