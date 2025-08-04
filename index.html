@@ -116,6 +116,7 @@
                 window.location.replace('/myatt.html');
             } else {
                 document.getElementById('txalert').innerHTML = tt;
+                if (tt.includes("Wrong User")) { localStorage.clear(); };   //Reset wrong/old Token
             };
         };
         //function reset_token() { localStorage.clear(); };
