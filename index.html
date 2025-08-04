@@ -24,19 +24,14 @@
         let token = localStorage.getItem("token");  //Load user token
         var urim = "";
         async function scanCode() {             
-            if (liff.isInClient()) {
-                //Delayed enable manual ScanQR
-                //setTimeout(() => {
-                //    document.getElementById('btnQR').style.visibility = 'visible';
-                //}, 4000); // 4000 milliseconds = 4 seconds
-                
+            if (liff.isInClient()) {                
                 //Open on LINE SCANQR
                 //window.location = 'https://line.me/R/nv/QRCodeReader';
                 if (typeof liff.scanCode === 'function') {
                     const result1 = await liff.scanCode();
                     urim = result1.value;
                 } else {
-                    window.location = 'https://line.me/R/nv/QRCodeReader?callback=https://liff.line.me/2007451851-4OrymRxl';    //External QR reader
+                    window.location = 'https://line.me/R/nv/QRCodeReader';    //External QR reader
                     urim = decodeURIComponent(window.location.search);
                 };
                 
